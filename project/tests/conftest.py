@@ -7,14 +7,12 @@ import pytest
 from starlette.testclient import TestClient
 from tortoise.contrib.fastapi import register_tortoise
 
+from app.config import Settings, get_settings
 from app.main import create_app
-from app.config import get_settings, Settings
 
 
 def get_settings_override():
-    return Settings(
-        testing=True, database_url=os.environ.get("DATABASE_TEST_URL")
-    )
+    return Settings(testing=True, database_url=os.environ.get("DATABASE_TEST_URL"))
 
 
 @pytest.fixture(scope="module")

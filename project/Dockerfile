@@ -18,7 +18,7 @@ RUN apt-get update \
 RUN pip install --upgrade pip \
   && pip install "poetry==1.1.6"
 COPY ./poetry.lock ./pyproject.toml ./
-RUN poetry install --no-interaction --no-ansi $(test "$ENVIRONMENT" == prod && echo "--no-dev")
+RUN poetry install --no-interaction --no-ansi
 
 # add app
 COPY . .
